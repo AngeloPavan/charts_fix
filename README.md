@@ -7,9 +7,17 @@ Solved:
 
 ---
 
-# Discontinued
+# How to use
 
-**This project is no longer maintained**, and will not receive further updates. Community members interested in collaborating on a community-maintained fork can coordinate in [this issue](https://github.com/google/charts/issues/798).
+In pubspec.yaml
+
+```yaml
+charts_flutter:
+    git: 
+      url: https://github.com/AngeloPavan/charts_fix.git
+      ref: c01b0ca2f83c1ce494a74c2defc7883fb56fd122 #commit SHA
+      path: charts_flutter
+```
 
 ---
 
@@ -20,8 +28,6 @@ See the [online gallery](https://google.github.io/charts/flutter/gallery.html) f
 types and examples of how to custom components of the chart.
 
 *Note*: This is not an official Google product.
-
-[![Travis CI Build Status](https://travis-ci.org/google/charts.svg?branch=master)](https://travis-ci.org/google/charts)
 
 ## charts_common
 
