@@ -16,7 +16,7 @@
 import 'package:charts_common/common.dart' as common;
 import 'package:charts_flutter/src/util/color.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/material.dart' show GestureDetector, GestureTapUpCallback, TapUpDetails, Theme;
+import 'package:flutter/material.dart' show GestureDetector, GestureTapUpCallback, TapUpDetails, Theme, Colors;
 
 import '../../symbol_renderer.dart';
 import 'legend.dart' show TappableLegend;
