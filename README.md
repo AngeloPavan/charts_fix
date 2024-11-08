@@ -2,6 +2,9 @@
 
 This fork aims to fix some issues caused by newer versions of Flutter.
 
+Solved:
+- Error: The getter 'bodyText2' isn't defined for the class 'TextTheme'.
+
 ---
 
 # Discontinued
