@@ -15,15 +15,7 @@
 
 import 'dart:math' show Rectangle;
 import 'package:charts_common/common.dart' as common
-    show
-        ChartBehavior,
-        LayoutViewPaintOrder,
-        RectSymbolRenderer,
-        SelectionTrigger,
-        Slider,
-        SliderListenerCallback,
-        SliderStyle,
-        SymbolRenderer;
+    show ChartBehavior, LayoutViewPaintOrder, RectSymbolRenderer, SelectionTrigger, Slider, SliderListenerCallback, SliderStyle, SymbolRenderer;
 import 'package:flutter/widgets.dart' show hashValues;
 import 'package:meta/meta.dart' show immutable;
 
@@ -138,8 +130,7 @@ class Slider<D> extends ChartBehavior<D> {
         layoutPaintOrder: layoutPaintOrder);
   }
 
-  static Set<GestureType> _getDesiredGestures(
-      common.SelectionTrigger eventTrigger) {
+  static Set<GestureType> _getDesiredGestures(common.SelectionTrigger eventTrigger) {
     final desiredGestures = new Set<GestureType>();
     switch (eventTrigger) {
       case common.SelectionTrigger.tapAndDrag:
@@ -155,8 +146,7 @@ class Slider<D> extends ChartBehavior<D> {
           ..add(GestureType.onDrag);
         break;
       default:
-        throw new ArgumentError(
-            'Slider does not support the event trigger ' + '"${eventTrigger}"');
+        throw new ArgumentError('Slider does not support the event trigger ' + '"${eventTrigger}"');
     }
     return desiredGestures;
   }
@@ -192,7 +182,6 @@ class Slider<D> extends ChartBehavior<D> {
 
   @override
   int get hashCode {
-    return hashValues(eventTrigger, handleRenderer, initialDomainValue, roleId,
-        snapToDatum, style, layoutPaintOrder);
+    return Object.hash(eventTrigger, handleRenderer, initialDomainValue, roleId, snapToDatum, style, layoutPaintOrder);
   }
 }

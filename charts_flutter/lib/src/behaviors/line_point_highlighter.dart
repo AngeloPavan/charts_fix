@@ -15,12 +15,7 @@
 
 import 'package:collection/collection.dart' show ListEquality;
 import 'package:charts_common/common.dart' as common
-    show
-        ChartBehavior,
-        LinePointHighlighter,
-        LinePointHighlighterFollowLineType,
-        SelectionModelType,
-        SymbolRenderer;
+    show ChartBehavior, LinePointHighlighter, LinePointHighlighterFollowLineType, SelectionModelType, SymbolRenderer;
 import 'package:flutter/widgets.dart' show hashValues;
 import 'package:meta/meta.dart' show immutable;
 
@@ -83,8 +78,7 @@ class LinePointHighlighter<D> extends ChartBehavior<D> {
       this.symbolRenderer});
 
   @override
-  common.LinePointHighlighter<D> createCommonBehavior() =>
-      new common.LinePointHighlighter<D>(
+  common.LinePointHighlighter<D> createCommonBehavior() => new common.LinePointHighlighter<D>(
         selectionModelType: selectionModelType,
         defaultRadiusPx: defaultRadiusPx,
         radiusPaddingPx: radiusPaddingPx,
@@ -115,7 +109,7 @@ class LinePointHighlighter<D> extends ChartBehavior<D> {
 
   @override
   int get hashCode {
-    return hashValues(
+    return Object.hash(
       selectionModelType,
       defaultRadiusPx,
       radiusPaddingPx,

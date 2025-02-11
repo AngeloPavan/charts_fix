@@ -14,14 +14,7 @@
 // limitations under the License.
 
 import 'package:charts_common/common.dart' as common
-    show
-        BehaviorPosition,
-        ChartBehavior,
-        ChartTitle,
-        ChartTitleDirection,
-        MaxWidthStrategy,
-        OutsideJustification,
-        TextStyleSpec;
+    show BehaviorPosition, ChartBehavior, ChartTitle, ChartTitleDirection, MaxWidthStrategy, OutsideJustification, TextStyleSpec;
 import 'package:flutter/widgets.dart' show hashValues;
 import 'package:meta/meta.dart' show immutable;
 
@@ -184,19 +177,7 @@ class ChartTitle<D> extends ChartBehavior<D> {
 
   @override
   int get hashCode {
-    return hashValues(
-        behaviorPosition,
-        layoutMinSize,
-        layoutPreferredSize,
-        maxWidthStrategy,
-        title,
-        titleDirection,
-        titleOutsideJustification,
-        titleStyleSpec,
-        subTitle,
-        subTitleStyleSpec,
-        innerPadding,
-        titlePadding,
-        outerPadding);
+    return Object.hash(behaviorPosition, layoutMinSize, layoutPreferredSize, maxWidthStrategy, title, titleDirection, titleOutsideJustification,
+        titleStyleSpec, subTitle, subTitleStyleSpec, innerPadding, titlePadding, outerPadding);
   }
 }

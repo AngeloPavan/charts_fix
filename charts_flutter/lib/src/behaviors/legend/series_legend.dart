@@ -27,23 +27,19 @@ import 'package:charts_common/common.dart' as common
         SelectionModelType,
         TextStyleSpec;
 import 'package:collection/collection.dart' show ListEquality;
-import 'package:flutter/widgets.dart'
-    show BuildContext, EdgeInsets, Widget, hashValues;
+import 'package:flutter/widgets.dart' show BuildContext, EdgeInsets, Widget, hashValues;
 import 'package:meta/meta.dart' show immutable;
 import '../../chart_container.dart' show ChartContainerRenderObject;
-import '../chart_behavior.dart'
-    show BuildableBehavior, ChartBehavior, GestureType;
+import '../chart_behavior.dart' show BuildableBehavior, ChartBehavior, GestureType;
 import 'legend.dart' show TappableLegend;
-import 'legend_content_builder.dart'
-    show LegendContentBuilder, TabularLegendContentBuilder;
+import 'legend_content_builder.dart' show LegendContentBuilder, TabularLegendContentBuilder;
 import 'legend_layout.dart' show TabularLegendLayout;
 
 /// Series legend behavior for charts.
 @immutable
 class SeriesLegend<D> extends ChartBehavior<D> {
   static const defaultBehaviorPosition = common.BehaviorPosition.top;
-  static const defaultOutsideJustification =
-      common.OutsideJustification.startDrawArea;
+  static const defaultOutsideJustification = common.OutsideJustification.startDrawArea;
   static const defaultInsideJustification = common.InsideJustification.topStart;
 
   final desiredGestures = new Set<GestureType>();
@@ -154,26 +150,21 @@ class SeriesLegend<D> extends ChartBehavior<D> {
 
     // Set the tabular layout settings to match the position if it is not
     // specified.
-    horizontalFirst ??= (position == common.BehaviorPosition.top ||
-        position == common.BehaviorPosition.bottom ||
-        position == common.BehaviorPosition.inside);
+    horizontalFirst ??=
+        (position == common.BehaviorPosition.top || position == common.BehaviorPosition.bottom || position == common.BehaviorPosition.inside);
     final layoutBuilder = horizontalFirst
-        ? new TabularLegendLayout.horizontalFirst(
-            desiredMaxColumns: desiredMaxColumns, cellPadding: cellPadding)
-        : new TabularLegendLayout.verticalFirst(
-            desiredMaxRows: desiredMaxRows, cellPadding: cellPadding);
+        ? new TabularLegendLayout.horizontalFirst(desiredMaxColumns: desiredMaxColumns, cellPadding: cellPadding)
+        : new TabularLegendLayout.verticalFirst(desiredMaxRows: desiredMaxRows, cellPadding: cellPadding);
 
     return new SeriesLegend._internal(
-        contentBuilder:
-            new TabularLegendContentBuilder(legendLayout: layoutBuilder),
+        contentBuilder: new TabularLegendContentBuilder(legendLayout: layoutBuilder),
         selectionModelType: common.SelectionModelType.info,
         position: position,
         outsideJustification: outsideJustification,
         insideJustification: insideJustification,
         defaultHiddenSeries: defaultHiddenSeries,
         showMeasures: showMeasures ?? false,
-        legendDefaultMeasure:
-            legendDefaultMeasure ?? common.LegendDefaultMeasure.none,
+        legendDefaultMeasure: legendDefaultMeasure ?? common.LegendDefaultMeasure.none,
         measureFormatter: measureFormatter,
         secondaryMeasureFormatter: secondaryMeasureFormatter,
         entryTextStyle: entryTextStyle);
@@ -234,8 +225,7 @@ class SeriesLegend<D> extends ChartBehavior<D> {
       insideJustification: insideJustification,
       defaultHiddenSeries: defaultHiddenSeries,
       showMeasures: showMeasures ?? false,
-      legendDefaultMeasure:
-          legendDefaultMeasure ?? common.LegendDefaultMeasure.none,
+      legendDefaultMeasure: legendDefaultMeasure ?? common.LegendDefaultMeasure.none,
       measureFormatter: measureFormatter,
       secondaryMeasureFormatter: secondaryMeasureFormatter,
       entryTextStyle: entryTextStyle,
@@ -257,8 +247,7 @@ class SeriesLegend<D> extends ChartBehavior<D> {
   });
 
   @override
-  common.SeriesLegend<D> createCommonBehavior() =>
-      new _FlutterSeriesLegend<D>(this);
+  common.SeriesLegend<D> createCommonBehavior() => new _FlutterSeriesLegend<D>(this);
 
   @override
   void updateCommonBehavior(common.ChartBehavior commonBehavior) {
@@ -288,24 +277,13 @@ class SeriesLegend<D> extends ChartBehavior<D> {
 
   @override
   int get hashCode {
-    return hashValues(
-        selectionModelType,
-        contentBuilder,
-        position,
-        outsideJustification,
-        insideJustification,
-        defaultHiddenSeries,
-        showMeasures,
-        legendDefaultMeasure,
-        measureFormatter,
-        secondaryMeasureFormatter,
-        entryTextStyle);
+    return Object.hash(selectionModelType, contentBuilder, position, outsideJustification, insideJustification, defaultHiddenSeries, showMeasures,
+        legendDefaultMeasure, measureFormatter, secondaryMeasureFormatter, entryTextStyle);
   }
 }
 
 /// Flutter specific wrapper on the common Legend for building content.
-class _FlutterSeriesLegend<D> extends common.SeriesLegend<D>
-    implements BuildableBehavior, TappableLegend {
+class _FlutterSeriesLegend<D> extends common.SeriesLegend<D> implements BuildableBehavior, TappableLegend {
   SeriesLegend config;
 
   _FlutterSeriesLegend(this.config)
@@ -328,26 +306,20 @@ class _FlutterSeriesLegend<D> extends common.SeriesLegend<D>
   common.BehaviorPosition get position => config.position;
 
   @override
-  common.OutsideJustification get outsideJustification =>
-      config.outsideJustification;
+  common.OutsideJustification get outsideJustification => config.outsideJustification;
 
   @override
-  common.InsideJustification get insideJustification =>
-      config.insideJustification;
+  common.InsideJustification get insideJustification => config.insideJustification;
 
   @override
   Widget build(BuildContext context) {
-    final hasSelection = legendState.legendEntries != null &&
-        legendState.legendEntries.any((entry) => entry.isSelected);
+    final hasSelection = legendState.legendEntries != null && legendState.legendEntries.any((entry) => entry.isSelected);
 
     // Show measures if [showMeasures] is true and there is a selection or if
     // showing measures when there is no selection.
-    final showMeasures = config.showMeasures &&
-        (hasSelection ||
-            legendDefaultMeasure != common.LegendDefaultMeasure.none);
+    final showMeasures = config.showMeasures && (hasSelection || legendDefaultMeasure != common.LegendDefaultMeasure.none);
 
-    return config.contentBuilder
-        .build(context, legendState, this, showMeasures: showMeasures);
+    return config.contentBuilder.build(context, legendState, this, showMeasures: showMeasures);
   }
 
   @override
